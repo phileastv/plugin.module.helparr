@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <!-- Info -->
+    <category label="30100">
+        <setting label="30101" type="lsep"/>
+        <setting label="30102" type="action" action="RunPlugin(plugin://plugin.module.helparr?action=AddToTmdbh)"/>
+    </category>
+    
+    <!-- Radarr -->
+    <category label="30200">
+        <!-- IP:port -->
+        <!-- API key -->
+        <!-- Directory -->
+        <!-- Quality -->
+    </category>
+    
+    <!-- Sonarr -->
+    <category label="30300">
+        <!-- IP:port -->
+        <!-- API key -->
+        <!-- Directory -->
+        <!-- Quality -->
+    </category>
+</settings>

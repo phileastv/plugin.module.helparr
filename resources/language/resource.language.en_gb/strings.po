@@ -1,0 +1,25 @@
+msgid ""
+msgstr ""
+
+# Category Info
+msgctxt "#30100"
+msgid "Info"
+msgstr ""
+
+msgctxt "#30101"
+msgid "This plugin cannot be run standalone."
+msgstr ""
+
+msgctxt "#30102"
+msgid "Add to TheMovieDB Helper"
+msgstr ""
+
+# Category Radarr
+msgctxt "#30200"
+msgid "Radarr"
+msgstr ""
+
+# Category Sonarr
+msgctxt "#30300"
+msgid "Sonarr"
+msgstr ""
