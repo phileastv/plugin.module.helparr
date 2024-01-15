@@ -8,17 +8,25 @@
     
     <!-- Radarr -->
     <category label="30200">
-        <!-- IP:port -->
+        <!-- Address -->
+        <setting label="30201" type="text"      id="radarr_addr"    option="urlencoded" default="http://192.168.0.2:7878"/>
         <!-- API key -->
+        <setting label="30202" type="text"      id="radarr_api"                         default=""/>
         <!-- Directory -->
+        <setting label="30203" type="text"      id="radarr_dir"                         default=""/>
         <!-- Quality -->
+        <setting label="30204" type="number"    id="radarr_res"/>
     </category>
     
     <!-- Sonarr -->
     <category label="30300">
-        <!-- IP:port -->
+        <!-- Address -->
+        <setting label="30201" type="text"      id="sonarr_addr"    option="urlencoded" default="http://192.168.0.2:8989"/>
         <!-- API key -->
+        <setting label="30202" type="text"      id="sonarr_api"                         default=""/>
         <!-- Directory -->
+        <setting label="30203" type="text"      id="sonarr_dir"                         default=""/>
         <!-- Quality -->
+        <setting label="30204" type="number"    id="sonarr_res"/>
     </category>
 </settings>

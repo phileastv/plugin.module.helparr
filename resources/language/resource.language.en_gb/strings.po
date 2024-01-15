@@ -19,6 +19,22 @@ msgctxt "#30200"
 msgid "Radarr"
 msgstr ""
 
+msgctxt "#30201"
+msgid "Address"
+msgstr ""
+
+msgctxt "#30202"
+msgid "API key"
+msgstr ""
+
+msgctxt "#30203"
+msgid "Download directory"
+msgstr ""
+
+msgctxt "#30204"
+msgid "Quality profile"
+msgstr ""
+
 # Category Sonarr
 msgctxt "#30300"
 msgid "Sonarr"
