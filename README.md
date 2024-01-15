@@ -6,4 +6,8 @@ Helper plugin for adding movies to Radarr and/or TV shows to Sonarr.
 
 ---
 
-🛠️ _Work in progress_ 🛠️
+Check out the [concept](../../wiki/Concept) in the wiki.
+
+&nbsp;
+
+`🛠️ _Work in progress_ 🛠️`
