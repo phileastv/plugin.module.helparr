@@ -39,7 +39,8 @@ if __name__ == "__main__":
         if True:
             exit_success()
     elif "action" in PLUGIN_PARAMS:
-        if PLUGIN_PARAMS["action"] == "AddToTmdbh":
+        action = PLUGIN_PARAMS["action"]
+        if action == "AddToTmdbh":
             # First check if TheMovieDB Helper is installed
             ret = xbmcvfs.exists("special://userdata/addon_data/plugin.video.themoviedb.helper/")
             if ret:
@@ -52,6 +53,12 @@ if __name__ == "__main__":
                 #    xbmcaddon.Addon(id='plugin.video.themoviedb.helper').openSettings()
             else:
                 xbmcgui.Dialog().ok("Failed", "Something went wrong, is TheMovieDb Helper installed?")
+        if action == "Radarr_TestConnection":
+            #TODO
+            xbmcgui.Dialog().ok("Debug", "Radarr test")
+        if action == "Sonarr_TestConnection":
+            #TODO
+            xbmcgui.Dialog().ok("Debug", "Sonarr test")
     else:
         # No supported parameter was found, just open the settings
         xbmcaddon.Addon().openSettings()
