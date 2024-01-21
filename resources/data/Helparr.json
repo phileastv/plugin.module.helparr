@@ -5,8 +5,8 @@
     "is_resolvable"     : "true",
     "assert"            : {
                             "play_movie":       ["tmdb"],
-                            "play_episode":     ["tmdb"]
+                            "play_episode":     ["tvdb"]
                           },
     "play_movie"        : "plugin://plugin.module.helparr/?movie={tmdb}",
-    "play_episode"      : "plugin://plugin.module.helparr/?tvshow={tmdb}"
+    "play_episode"      : "plugin://plugin.module.helparr/?tvshow={tvdb}"
 }

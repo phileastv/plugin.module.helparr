@@ -18,9 +18,16 @@ PLUGIN_PARAMS   = dict(parse_qsl(sys.argv[2][1:]))
 PLUGIN_PATH     = xbmcaddon.Addon().getAddonInfo("path")
 
 
-def radarr_get(api_path, arguments):
-    address = xbmcaddon.Addon().getSetting("radarr_addr")
-    api_key = xbmcaddon.Addon().getSetting("radarr_api")
+def arr_get(manager, api_path, arguments):
+    if manager == "Radarr":
+        address = xbmcaddon.Addon().getSetting("radarr_addr")
+        api_key = xbmcaddon.Addon().getSetting("radarr_api")
+    elif manager == "Sonarr":
+        address = xbmcaddon.Addon().getSetting("sonarr_addr")
+        api_key = xbmcaddon.Addon().getSetting("sonarr_api")
+    else:
+        response = "Internal error"
+        status = False
     
     url = f"{address}/api/v3/{api_path}?apikey={api_key}&{arguments}"
     
@@ -41,9 +48,16 @@ def radarr_get(api_path, arguments):
     
     return status, response
 
-def radarr_post(api_path, data):
-    address = xbmcaddon.Addon().getSetting("radarr_addr")
-    api_key = xbmcaddon.Addon().getSetting("radarr_api")
+def arr_post(manager, api_path, data):
+    if manager == "Radarr":
+        address = xbmcaddon.Addon().getSetting("radarr_addr")
+        api_key = xbmcaddon.Addon().getSetting("radarr_api")
+    elif manager == "Sonarr":
+        address = xbmcaddon.Addon().getSetting("sonarr_addr")
+        api_key = xbmcaddon.Addon().getSetting("sonarr_api")
+    else:
+        response = "Internal error"
+        status = False
     
     url = f"{address}/api/v3/{api_path}?apikey={api_key}"
     
@@ -61,6 +75,14 @@ def radarr_post(api_path, data):
         response = f"Error:\n{repr(e)}"
     else:
         status = True
+    
+    if status:
+        response_json = response.json()
+        if response_json.get("severity") == "error":
+            response = response_json.get("errorMessage")
+            status = False
+        else:
+            response = response_json
     
     return status, response
 
@@ -80,13 +102,13 @@ if __name__ == "__main__":
         directory = xbmcaddon.Addon().getSetting("radarr_dir")
         if directory != "":
             data = {
-                    "title": "",
+                    "title": "title",
                     "qualityProfileId": 1,
                     "tmdbId": tmdb_id,
                     "rootFolderPath": directory
                 }
             # Add to Radarr
-            success, response = radarr_post("movie", data)
+            success, response = arr_post("Radarr", "movie", data)
         else:
             response = "No root folder defined"
             success = False
@@ -96,13 +118,25 @@ if __name__ == "__main__":
         else:
             exit_fail(response)
     elif "tvshow" in PLUGIN_PARAMS:
-        tmdb_id = PLUGIN_PARAMS["tvshow"]
-        # Add to Sonarr
-        #TODO
-        xbmcgui.Dialog().ok("TVShow", f"{PLUGIN_PARAMS}")
-        #TODO
-        if True:
+        tvdb_id = PLUGIN_PARAMS["tvshow"]
+        directory = xbmcaddon.Addon().getSetting("sonarr_dir")
+        if directory != "":
+            data = {
+                    "title": "title",
+                    "qualityProfileId": 1,
+                    "tvdbId": tvdb_id,
+                    "rootFolderPath": directory
+                }
+            # Add to Sonarr
+            success, response = arr_post("Sonarr", "series", data)
+        else:
+            response = "No root folder defined"
+            success = False
+        
+        if success:
             exit_success()
+        else:
+            exit_fail(response)
     elif "action" in PLUGIN_PARAMS:
         action = PLUGIN_PARAMS["action"]
         if action == "AddToTmdbh":
