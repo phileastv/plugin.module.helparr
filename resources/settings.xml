@@ -9,24 +9,24 @@
     <!-- Radarr -->
     <category label="30200">
         <!-- Address -->
-        <setting label="30201" type="text"      id="radarr_addr"    option="urlencoded" default="http://192.168.0.2:7878"/>
+        <setting label="30201" type="text"      id="radarr_addr"    default="http://192.168.0.2:7878"/>
         <!-- API key -->
-        <setting label="30202" type="text"      id="radarr_api"                         default=""/>
+        <setting label="30202" type="text"      id="radarr_api"     default=""/>
         <!------------>
         <setting type="sep"/>
         <!-- Root Folder -->
-        <setting label="30204" type="text"      id="radarr_dir"                         default="/movies"/>
+        <setting label="30203" type="text"      id="radarr_dir"     default=""/>
     </category>
     
     <!-- Sonarr -->
     <category label="30300">
         <!-- Address -->
-        <setting label="30301" type="text"      id="sonarr_addr"    option="urlencoded" default="http://192.168.0.2:8989"/>
+        <setting label="30301" type="text"      id="sonarr_addr"    default="http://192.168.0.2:8989"/>
         <!-- API key -->
-        <setting label="30302" type="text"      id="sonarr_api"                         default=""/>
+        <setting label="30302" type="text"      id="sonarr_api"     default=""/>
         <!------------>
         <setting type="sep"/>
         <!-- Root Folder -->
-        <setting label="30304" type="text"      id="sonarr_dir"                         default="/tv"/>
+        <setting label="30303" type="text"      id="sonarr_dir"     default=""/>
     </category>
 </settings>

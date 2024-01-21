@@ -1,5 +1,5 @@
 # General python libs
-import sys
+import sys, requests
 from urllib.parse import parse_qsl
 
 # Kodi libs
@@ -18,20 +18,85 @@ PLUGIN_PARAMS   = dict(parse_qsl(sys.argv[2][1:]))
 PLUGIN_PATH     = xbmcaddon.Addon().getAddonInfo("path")
 
 
+def radarr_get(api_path, arguments):
+    address = xbmcaddon.Addon().getSetting("radarr_addr")
+    api_key = xbmcaddon.Addon().getSetting("radarr_api")
+    
+    url = f"{address}/api/v3/{api_path}?apikey={api_key}&{arguments}"
+    
+    status = False
+    try:
+        response = requests.get(url, timeout=3)
+        response.raise_for_status()
+    except requests.exceptions.HTTPError as e:
+        response = f"HTTP Error:\n{repr(e)}"
+    except requests.exceptions.ConnectionError as e:
+        response = f"Error Connecting:\n{repr(e)}"
+    except requests.exceptions.Timeout as e:
+        response = f"Timeout Error:\n{repr(e)}"
+    except requests.exceptions.RequestException as e:
+        response = f"Error:\n{repr(e)}"
+    else:
+        status = True
+    
+    return status, response
+
+def radarr_post(api_path, data):
+    address = xbmcaddon.Addon().getSetting("radarr_addr")
+    api_key = xbmcaddon.Addon().getSetting("radarr_api")
+    
+    url = f"{address}/api/v3/{api_path}?apikey={api_key}"
+    
+    status = False
+    try:
+        response = requests.post(url, json=data, timeout=3)
+        response.raise_for_status()
+    except requests.exceptions.HTTPError as e:
+        response = f"HTTP Error:\n{repr(e)}"
+    except requests.exceptions.ConnectionError as e:
+        response = f"Error Connecting:\n{repr(e)}"
+    except requests.exceptions.Timeout as e:
+        response = f"Timeout Error:\n{repr(e)}"
+    except requests.exceptions.RequestException as e:
+        response = f"Error:\n{repr(e)}"
+    else:
+        status = True
+    
+    return status, response
+
 def exit_success():
     xbmcgui.Dialog().ok("Success", "Content added!")
     xbmcplugin.setResolvedUrl(PLUGIN_HANDLE, True, xbmcgui.ListItem(offscreen=True, path=PLUGIN_PATH+"resources/data/dummy.mp4"))
 
+def exit_fail(error):
+    ret = xbmcgui.Dialog().yesno("Fail", f"{error}\n\nOpen add-on settings?")
+    if ret:
+        xbmcaddon.Addon().openSettings()
+
 if __name__ == "__main__":
     # Check the parameters passed to the plugin
     if "movie" in PLUGIN_PARAMS:
-        # Add to Radarr
-        #TODO
-        xbmcgui.Dialog().ok("Movie", f"{PLUGIN_PARAMS}")
-        #TODO
-        if True:
+        tmdb_id = PLUGIN_PARAMS["movie"]
+        directory = xbmcaddon.Addon().getSetting("radarr_dir")
+        if directory != "":
+            data = {
+                    "title": "",
+                    "qualityProfileId": 1,
+                    "tmdbId": tmdb_id,
+                    "rootFolderPath": directory
+                }
+            # Add to Radarr
+            success, response = radarr_post("movie", data)
+        else:
+            response = "No root folder defined"
+            success = False
+        
+        if success:
             exit_success()
+        else:
+            exit_fail(response)
     elif "tvshow" in PLUGIN_PARAMS:
+        tmdb_id = PLUGIN_PARAMS["tvshow"]
         # Add to Sonarr
         #TODO
         xbmcgui.Dialog().ok("TVShow", f"{PLUGIN_PARAMS}")
