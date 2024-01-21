@@ -28,10 +28,6 @@ msgid "API key"
 msgstr ""
 
 msgctxt "#30203"
-msgid "Test connection"
-msgstr ""
-
-msgctxt "#30204"
 msgid "Root Folder"
 msgstr ""
 
@@ -49,9 +45,5 @@ msgid "API key"
 msgstr ""
 
 msgctxt "#30303"
-msgid "Test connection"
-msgstr ""
-
-msgctxt "#30304"
 msgid "Root Folder"
 msgstr ""

@@ -53,12 +53,6 @@ if __name__ == "__main__":
                 #    xbmcaddon.Addon(id='plugin.video.themoviedb.helper').openSettings()
             else:
                 xbmcgui.Dialog().ok("Failed", "Something went wrong, is TheMovieDb Helper installed?")
-        if action == "Radarr_TestConnection":
-            #TODO
-            xbmcgui.Dialog().ok("Debug", "Radarr test")
-        if action == "Sonarr_TestConnection":
-            #TODO
-            xbmcgui.Dialog().ok("Debug", "Sonarr test")
     else:
         # No supported parameter was found, just open the settings
         xbmcaddon.Addon().openSettings()
