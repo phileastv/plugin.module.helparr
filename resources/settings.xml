@@ -16,6 +16,12 @@
         <setting type="sep"/>
         <!-- Root Folder -->
         <setting label="30203" type="text"      id="radarr_dir"     default=""/>
+        <!------------>
+        <setting type="sep"/>
+        <!-- Quality Profile -->
+        <setting label="30205" type="select"    id="radarr_quality_profile" default="0" values="Ask" lvalues="30403"/>
+        <!-- Refresh Profiles Button -->
+        <setting label="30206" type="action"    action="RunPlugin(plugin://plugin.module.helparr?action=RefreshRadarrProfiles)"/>
     </category>
     
     <!-- Sonarr -->
@@ -28,5 +34,21 @@
         <setting type="sep"/>
         <!-- Root Folder -->
         <setting label="30303" type="text"      id="sonarr_dir"     default=""/>
+        <!------------>
+        <setting type="sep"/>
+        <!-- Quality Profile -->
+        <setting label="30305" type="select"    id="sonarr_quality_profile" default="0" values="Ask" lvalues="30403"/>
+        <!-- Refresh Profiles Button -->
+        <setting label="30306" type="action"    action="RunPlugin(plugin://plugin.module.helparr?action=RefreshSonarrProfiles)"/>
+    </category>
+    
+    <!-- Search -->
+    <category label="30400">
+        <!-- Search for missing content after adding -->
+        <setting label="30401" type="select"    id="search_mode"    default="Ask" values="Always|Ask|Never" lvalues="30402|30403|30404"/>
+        <!------------>
+        <setting type="sep"/>
+        <!-- Progress monitoring interval -->
+        <setting label="30410" type="select"    id="progress_interval" default="5" values="3|5|10|15" lvalues="3 seconds|5 seconds|10 seconds|15 seconds"/>
     </category>
 </settings>

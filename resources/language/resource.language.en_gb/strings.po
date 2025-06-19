@@ -31,6 +31,18 @@ msgctxt "#30203"
 msgid "Root Folder"
 msgstr ""
 
+msgctxt "#30204"
+msgid "Quality Profile Mode"
+msgstr ""
+
+msgctxt "#30205"
+msgid "Quality Profile"
+msgstr ""
+
+msgctxt "#30206"
+msgid "Refresh Quality Profiles"
+msgstr ""
+
 # Category Sonarr
 msgctxt "#30300"
 msgid "Sonarr"
@@ -46,4 +58,61 @@ msgstr ""
 
 msgctxt "#30303"
 msgid "Root Folder"
+msgstr ""
+
+msgctxt "#30304"
+msgid "Quality Profile Mode"
+msgstr ""
+
+msgctxt "#30305"
+msgid "Quality Profile"
+msgstr ""
+
+msgctxt "#30306"
+msgid "Refresh Quality Profiles"
+msgstr ""
+
+# Category Search
+msgctxt "#30400"
+msgid "Search"
+msgstr ""
+
+msgctxt "#30401"
+msgid "Search for missing content after adding"
+msgstr ""
+
+msgctxt "#30402"
+msgid "Always"
+msgstr ""
+
+msgctxt "#30403"
+msgid "Ask"
+msgstr ""
+
+msgctxt "#30404"
+msgid "Never"
+msgstr ""
+
+msgctxt "#30405"
+msgid "Search started"
+msgstr ""
+
+msgctxt "#30406"
+msgid "Content added and search started!"
+msgstr ""
+
+msgctxt "#30407"
+msgid "Start search for missing content?"
+msgstr ""
+
+msgctxt "#30408"
+msgid "Search for missing content"
+msgstr ""
+
+msgctxt "#30409"
+msgid "Fixed"
+msgstr ""
+
+msgctxt "#30410"
+msgid "Progress monitoring interval"
 msgstr ""
